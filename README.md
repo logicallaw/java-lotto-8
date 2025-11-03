@@ -1,10 +1,15 @@
 # java-lotto-precourse: 로또
 
 ## 기능 구현
-- [x] RottoInputView 구현
+- [x] LottoInputView 구현
   - [x] 로또 구입 금액 입력
   - [x] 당첨 번호와 보너스 번호를 입력
-- [ ] RottoOutputView 구현
+- [ ] LottoOutputView 구현
+  - [ ] 입력 받을 구입 금액 문구 출력
+  - [ ] 입력 받을 보너스 번호 문구 출력
+  - [ ] 입력 받을 당첨 번호 문구 출력
+  - [ ] 입력 받을 보너스 번호 문구 출력
+  - [ ] 발행한 로또 수량 및 번호 출력
 - [ ] 1개의 로또 발행 시, 중복되지 않은 6개의 숫자 추첨
   - Randoms.pickUniqueNumbersInRange(1, 45, 6); 으로 구현
   - 구입 금액에 해당하는 만큼 로또 발행
