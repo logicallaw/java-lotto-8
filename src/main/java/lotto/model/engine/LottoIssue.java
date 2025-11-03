@@ -98,7 +98,7 @@ public class LottoIssue {
         }
 
         // 발행한 로또 수량을 저장한다.
-        setLottoQuantityIssued(purchasingAmountParsed % LottoConstant.THOUSAND_WON.getLabel());
+        setLottoQuantityIssued(purchasingAmountParsed / LottoConstant.THOUSAND_WON.getLabel());
     }
 
     /**
