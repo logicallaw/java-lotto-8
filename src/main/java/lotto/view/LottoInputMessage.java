@@ -6,6 +6,9 @@
  */
 package lotto.view;
 
+/**
+ * 로또의 입력 화면 메시지를 정의한다.
+ */
 public enum LottoInputMessage {
     PURCHASING_AMOUNT("구입금액을 입력해 주세요."),
     WINNING_LOTTO_NUMBERS("당첨 번호를 입력해 주세요."),

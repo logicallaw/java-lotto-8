@@ -8,6 +8,9 @@ package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
 
+/**
+ * 로또의 입력 화면을 정의한다.
+ */
 public class LottoInputView {
     /**
      * 1,000원 단위의 로또 구입 금액을 입력한다.

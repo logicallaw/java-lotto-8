@@ -6,6 +6,9 @@
  */
 package lotto.model.util;
 
+/**
+ * 로또의 에러 메시지를 정의한다.
+ */
 public enum LottoErrorMessage {
     DIFFERENT_BETWEEN_BONUS_AND_WINNING_NUMBERS("[ERROR] 보너스 번호와 당첨 번호는 서로 달라야 해요."),
     ALL_NUMBERS_DIFFERENT("[ERROR] 모든 로또 번호는 서로 달라야 해요."),
