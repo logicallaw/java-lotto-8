@@ -4,9 +4,8 @@
  * Author: Junho Kim
  * Latest Updated Date: 2025-11-03
  */
-package lotto;
+package lotto.model.engine;
 
-import lotto.model.engine.Lotto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -30,7 +29,7 @@ class LottoTest {
 
     @DisplayName("로또 번호의 개수가 6개 미만이면 예외가 발생한다.")
     @Test
-    void When_LessThanSix_Expect_IllegalArgumentException() {
+    void 로또_번호의_개수가_6개_미만이면_예외가_발생한다() {
         assertThatThrownBy(() -> new Lotto(List.of(1,2,3))).isInstanceOf(IllegalArgumentException.class);
     }
 }
