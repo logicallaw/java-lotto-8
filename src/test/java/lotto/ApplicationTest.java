@@ -1,3 +1,9 @@
+/*
+ * This is file of the project java-lotto-precourse
+ * Copyright (c) 2025 logicallaw
+ * Author: Junho Kim
+ * Latest Updated Date: 2025-11-03
+ */
 package lotto;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
