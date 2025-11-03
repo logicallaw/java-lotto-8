@@ -19,6 +19,7 @@ import lotto.model.util.LottoErrorMessage;
  * 2) 로또 수량만큼 로또를 발행하여 관리한다.
  */
 public class LottoIssue {
+    private int purchasingAmount;
     private int lottoQuantityIssued;
     private ArrayList<Lotto> lottos;
 
@@ -30,8 +31,20 @@ public class LottoIssue {
         this.lottoQuantityIssued = lottoQuantity;
     }
 
+    /**
+     * 발행한 로또를 저장한다.
+     * @param lottos 발행한 로또
+     */
     private void setLottos(ArrayList<Lotto> lottos) {
         this.lottos = lottos;
+    }
+
+    /**
+     * 로또 구입 금액을 저장한다.
+     * @param purchasingAmount 로또 구입 금액
+     */
+    private void setPurchasingAmount(int purchasingAmount) {
+        this.purchasingAmount = purchasingAmount;
     }
 
     /**
@@ -85,6 +98,14 @@ public class LottoIssue {
     }
 
     /**
+     * 로또 구입 금액을 반환한다.
+     * @return 로또 구입 금액
+     */
+    public int getPurchasingAmount() {
+        return this.purchasingAmount;
+    }
+
+    /**
      * 1,000원 단위인 구입 금액으로부터 발행한 로또 수량을 계산한다.
      * @param purchasingAmount 구입 금액
      */
@@ -96,6 +117,9 @@ public class LottoIssue {
         if (!isThousandWonUnit(purchasingAmountParsed)) {
             throw new IllegalArgumentException(LottoErrorMessage.ONLY_ENTER_1000_WON.getLabel());
         }
+
+        // 구입 금액을 저장한다.
+        setPurchasingAmount(purchasingAmountParsed);
 
         // 발행한 로또 수량을 저장한다.
         setLottoQuantityIssued(purchasingAmountParsed / LottoConstant.THOUSAND_WON.getLabel());
@@ -109,7 +133,7 @@ public class LottoIssue {
 
         for (int i = 1; i <= lottoQuantityIssued; i++) {
             // 1~45 사이의 중복되지 않는 랜덤한 6개의 로또 번호를 발행한다.
-            List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            List<Integer> numbers = new ArrayList<>(Randoms.pickUniqueNumbersInRange(1, 45, 6));
             // 로또 번호를 오름차순으로 정렬한다.
             Collections.sort(numbers);
             // 정렬된 로또 번호를 ArrayList에 저장한다.
