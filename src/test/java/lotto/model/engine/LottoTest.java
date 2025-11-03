@@ -1,5 +1,12 @@
+/*
+ * This is file of the project java-lotto-precourse
+ * Copyright (c) 2025 logicallaw
+ * Author: Junho Kim
+ * Latest Updated Date: 2025-11-03
+ */
 package lotto;
 
+import lotto.model.engine.Lotto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -21,5 +28,9 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    // TODO: 추가 기능 구현에 따른 테스트 코드 작성
+    @DisplayName("로또 번호의 개수가 6개 미만이면 예외가 발생한다.")
+    @Test
+    void When_LessThanSix_Expect_IllegalArgumentException() {
+        assertThatThrownBy(() -> new Lotto(List.of(1,2,3))).isInstanceOf(IllegalArgumentException.class);
+    }
 }

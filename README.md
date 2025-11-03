@@ -1,9 +1,9 @@
 # java-lotto-precourse: 로또
 
 ## 기능 구현
-- [ ] RottoInputView 구현
-  - [ ] 로또 구입 금액 입력
-  - [ ] 당첨 번호와 보너스 번호를 입력
+- [x] RottoInputView 구현
+  - [x] 로또 구입 금액 입력
+  - [x] 당첨 번호와 보너스 번호를 입력
 - [ ] RottoOutputView 구현
 - [ ] 1개의 로또 발행 시, 중복되지 않은 6개의 숫자 추첨
   - Randoms.pickUniqueNumbersInRange(1, 45, 6); 으로 구현
@@ -13,6 +13,7 @@
 - [ ] 사용자가 구매한 로또 번호화 당첨 번호 비교 코드
   - [ ] 당첨 내역 및 수익률 계산 코드
 - [ ] Enum LottoError 클래스 정의
+  - "[ERROR] 숫자만 입력 가능합니다."
   - "[ERROR] 1,000 단위로 입력해주세요." 
   - "[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다."
   - "[ERROR] 당첨 번호는 쉼표를 기준으로 구분하여 6개의 숫자를 입력해주세요."
