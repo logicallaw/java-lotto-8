@@ -15,7 +15,7 @@ import lotto.model.engine.Lotto;
  * 로또의 출력 화면을 정의한다.
  */
 public class LottoOutputView {
-    private final List<String> lottoDrawResultMessages = List.of(new String[]{
+    private static final List<String> lottoDrawResultMessages = List.of(new String[]{
             LottoOutputMessage.LOTTO_THREE_MATCH.getLabel(),
             LottoOutputMessage.LOTTO_FOUR_MATCH.getLabel(),
             LottoOutputMessage.LOTTO_FIVE_MATCH.getLabel(),
