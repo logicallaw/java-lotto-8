@@ -7,6 +7,7 @@
 package lotto.view;
 
 public enum LottoOutputMessage {
+    LOTTO_DRAW_RESULT("당첨 통계"),
     LOTTO_QUANTITY_ISSUED("개를 구매했습니다.");
 
     private final String label;

@@ -47,4 +47,12 @@ public class LottoOutputView {
             System.out.println(lottos.get(i));
         }
     }
+
+    /**
+     * 로또 추첨 결과 발표를 안내한다.
+     */
+    public void printLottoDrawResult() {
+        System.out.println(LottoOutputMessage.LOTTO_DRAW_RESULT.getLabel());
+        System.out.println("---");
+    }
 }
