@@ -12,8 +12,8 @@ package lotto.model.engine;
 public enum LottoConstant {
     MIN_NUMBER_OF_LOTTO(1),
     MAX_NUMBER_OF_LOTTO(45),
-    START_LOTTO_NUMBER(1),
-    END_LOTTO_NUMBER(6),
+    LOTTO_START_INDEX(0),
+    LOTTO_END_INDEX(5),
     THOUSAND_WON(1000),
     ONLY_BE_DIVIDED_BY_THEMSELVES(0);
 

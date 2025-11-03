@@ -43,14 +43,21 @@ public class Lotto {
      */
     private boolean isDifferentOfAllNumber(List<Integer> numbers) {
         HashSet<Integer> hashSet = new HashSet<Integer>();
-        for (int currentLottoNumberIndex = LottoConstant.START_LOTTO_NUMBER.getLabel();
-                 currentLottoNumberIndex <= LottoConstant.END_LOTTO_NUMBER.getLabel();
-                 currentLottoNumberIndex++) {
-            if (hashSet.contains(numbers.get(currentLottoNumberIndex))) {
+        for (int lottoCurrentIndex = LottoConstant.LOTTO_START_INDEX.getLabel(); lottoCurrentIndex <= LottoConstant.LOTTO_END_INDEX.getLabel();
+             lottoCurrentIndex++) {
+            if (hashSet.contains(numbers.get(lottoCurrentIndex))) {
                 return false;
             }
-            hashSet.add(numbers.get(currentLottoNumberIndex));
+            hashSet.add(numbers.get(lottoCurrentIndex));
         }
         return true;
+    }
+
+    /**
+     * 6개의 로또 번호가 담긴 numbers를 반환한다.
+     * @return 6개의 로또 번호 리스트
+     */
+    public List<Integer> getNumbers() {
+        return this.numbers;
     }
 }
