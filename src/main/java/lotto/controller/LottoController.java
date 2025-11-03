@@ -6,6 +6,7 @@
  */
 package lotto.controller;
 
+import java.util.List;
 import lotto.model.engine.LottoDraw;
 import lotto.model.engine.LottoIssue;
 import lotto.model.engine.LottoResultsEntered;
@@ -34,7 +35,7 @@ public class LottoController {
      * 로또 구입 금액을 입력 받는다.
      * @return 로또 구입 금액
      */
-    private String enterPurchasingAmount() {
+    String enterPurchasingAmount() {
         this.lottoOutputView.printPurchasingAmount();
         return this.lottoInputView.getPurchasingAmount();
     }
@@ -43,20 +44,24 @@ public class LottoController {
      * 당첨 번호와 보너스 번호를 입력 받는다.
      * @return 당첨 번호와 보너스 번호로 구성된 불변 객체
      */
-    private LottoResultsEntered enterLottoResults() {
+    LottoResultsEntered enterLottoResults() {
         this.lottoOutputView.printWinningLottoNumbers();
         final String winningLottoNumbersEntered = this.lottoInputView.getWinningLottoNumbers();
+        this.lottoOutputView.separateLine();
+
         this.lottoOutputView.printBonusNumber();
         final String bonusNumberEntered = this.lottoInputView.getBonusNumber();
+        this.lottoOutputView.separateLine();
         return new LottoResultsEntered(winningLottoNumbersEntered, bonusNumberEntered);
     }
 
     /**
      * 로또 구입 금액을 입력 받고 발행할 로또 수량을 계산한다. (Step 1)
      */
-    private void executeBuyingLotto() {
+    void executeBuyingLotto() {
         // 구입 금액을 입력 받는다.
         final String purchasingAmountEntered = enterPurchasingAmount();
+        this.lottoOutputView.separateLine();
 
         // 발행한 로또 수량을 계산한다.
         this.lottoIssue.calculateLottoQuantityIssued(purchasingAmountEntered);
@@ -65,7 +70,7 @@ public class LottoController {
     /**
      * 구입 금액만큼 로또를 발행하고 그 결과를 출력한다. (Step 2)
      */
-    private void executeLottoIssue() {
+    void executeLottoIssue() {
         // 구입 금액만큼 로또를 발행한다.
         this.lottoIssue.issueLotto();
         // 발행한 로또 수량 및 번호를 출력한다 (로또 번호는 오름차순으로 정렬됨).
@@ -73,14 +78,17 @@ public class LottoController {
     }
 
     /**
-     * 당첨 번호와 보너스 번호를 입력 받고, 로또를 추첨한 뒤 통계를 출력한다. (Step 3)
+     * 당첨 번호와 보너스 번호를 입력 받아 로또를 추첨하고 결과를 출력한다. (Step 3)
      */
-    private void executeGettingResults() {
-        // 당첨 번호와 보너스 번호를 입력받는다.
+    void executeGettingResults() {
+        // 당첨 번호와 보너스 번호를 입력받아 로또를 추첨한다.
         final LottoResultsEntered lottoResultsEntered = enterLottoResults();
 
-        // 당첨 통계(일치 여부 및 총 수익률)를 출력한다.
-        this.lottoDraw.drawLotto(this.lottoIssue.getLottos(), lottoResultsEntered);
+        // 당첨 내역 및 수익률을 계산한다.
+        List<Integer> drawResult = this.lottoDraw.drawLotto(this.lottoIssue.getLottos(), this.lottoIssue.getLottoQuantityIssued(), lottoResultsEntered);
+        double earningsRate = this.lottoDraw.calculateEarningsRate(drawResult, this.lottoIssue.getPurchasingAmount());
+
+        lottoOutputView.printLottoDrawResults(drawResult, earningsRate);
     }
 
     /**
