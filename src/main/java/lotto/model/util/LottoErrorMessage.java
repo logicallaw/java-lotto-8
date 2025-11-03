@@ -4,7 +4,7 @@
  * Author: Junho Kim
  * Latest Updated Date: 2025-11-03
  */
-package lotto.model.utils;
+package lotto.model.util;
 
 public enum LottoErrorMessage {
     DIFFERENT_BETWEEN_BONUS_AND_WINNING_NUMBERS("[ERROR] 보너스 번호와 당첨 번호는 서로 달라야 해요."),

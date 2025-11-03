@@ -7,7 +7,7 @@
 package lotto.model.engine;
 
 import java.util.StringTokenizer;
-import lotto.model.utils.LottoErrorMessage;
+import lotto.model.util.LottoErrorMessage;
 
 /**
  * 당첨 번호와 보너스 번호로 구성된 불변 객체를 정의한다.

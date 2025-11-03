@@ -8,7 +8,7 @@ package lotto.model.engine;
 
 import java.util.HashSet;
 import java.util.List;
-import lotto.model.utils.LottoErrorMessage;
+import lotto.model.util.LottoErrorMessage;
 
 /**
  * 6개의 로또 번호를 저장하고 관리한다.

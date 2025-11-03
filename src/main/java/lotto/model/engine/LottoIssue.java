@@ -10,7 +10,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import lotto.model.utils.LottoErrorMessage;
+import lotto.model.util.LottoErrorMessage;
 
 /**
  * 로또 발행의 생명 주기를 관리한다.
