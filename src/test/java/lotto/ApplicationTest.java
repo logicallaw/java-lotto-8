@@ -1,6 +1,14 @@
+/*
+ * This is file of the project java-lotto-precourse
+ * Copyright (c) 2025 logicallaw
+ * Author: Junho Kim
+ * Latest Updated Date: 2025-11-03
+ */
 package lotto;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -52,6 +60,135 @@ class ApplicationTest extends NsTest {
             runException("1000j");
             assertThat(output()).contains(ERROR_MESSAGE);
         });
+    }
+
+    @Nested
+    @DisplayName("로또 당첨 경우에 대하여")
+    class AllLottoCases {
+        @Test
+        @DisplayName("당첨되지 않아도 잘 수행한다")
+        void 당첨되지_않아도_잘_수행한다() {
+            assertRandomUniqueNumbersInRangeTest(
+                    () -> {
+                        run("2000", "1,2,3,4,5,6", "7");
+                        assertThat(output()).contains(
+                                "2개를 구매했습니다.",
+                                "3개 일치 (5,000원) - 0개",
+                                "4개 일치 (50,000원) - 0개",
+                                "5개 일치 (1,500,000원) - 0개",
+                                "5개 일치, 보너스 볼 일치 (30,000,000원) - 0개",
+                                "6개 일치 (2,000,000,000원) - 0개",
+                                "총 수익률은 0.0%입니다."
+                        );
+                    },
+                    List.of(10, 11, 12, 13, 14, 15),
+                    List.of(16, 17, 18, 19, 20, 21)
+            );
+        }
+
+        @Test
+        @DisplayName("3개의 숫자가 일치하여 잘 수행한다")
+        void _3개의_숫자가_일치하여_잘_수행한다() {
+            assertRandomUniqueNumbersInRangeTest(
+                    () -> {
+                        run("1000", "1,2,3,4,5,6", "7");
+                        assertThat(output()).contains(
+                                "1개를 구매했습니다.",
+                                "[1, 2, 3, 10, 11, 12]",
+                                "3개 일치 (5,000원) - 1개",
+                                "4개 일치 (50,000원) - 0개",
+                                "5개 일치 (1,500,000원) - 0개",
+                                "5개 일치, 보너스 볼 일치 (30,000,000원) - 0개",
+                                "6개 일치 (2,000,000,000원) - 0개",
+                                "총 수익률은 500.0%입니다."
+                        );
+                    },
+                    List.of(1, 2, 3, 10, 11, 12)
+            );
+        }
+
+        @Test
+        @DisplayName("4개의 숫자가 일치하여 잘 수행한다")
+        void _4개의_숫자가_일치하여_잘_수행한다() {
+            assertRandomUniqueNumbersInRangeTest(
+                    () -> {
+                        run("1000", "1,2,3,4,5,6", "7");
+                        assertThat(output()).contains(
+                                "1개를 구매했습니다.",
+                                "[1, 2, 3, 4, 10, 11]",
+                                "3개 일치 (5,000원) - 0개",
+                                "4개 일치 (50,000원) - 1개",
+                                "5개 일치 (1,500,000원) - 0개",
+                                "5개 일치, 보너스 볼 일치 (30,000,000원) - 0개",
+                                "6개 일치 (2,000,000,000원) - 0개",
+                                "총 수익률은 5,000.0%입니다."
+                        );
+                    },
+                    List.of(1, 2, 3, 4, 10, 11)
+            );
+        }
+
+        @Test
+        @DisplayName("5개의 숫자가 일치하여 잘 수행한다")
+        void _5개의_숫자가_일치하여_잘_수행한다() {
+            assertRandomUniqueNumbersInRangeTest(
+                    () -> {
+                        run("1000", "1,2,3,4,5,6", "7");
+
+                        assertThat(output()).contains(
+                                "1개를 구매했습니다.",
+                                "[1, 2, 3, 4, 5, 45]",
+                                "3개 일치 (5,000원) - 0개",
+                                "4개 일치 (50,000원) - 0개",
+                                "5개 일치 (1,500,000원) - 1개",
+                                "5개 일치, 보너스 볼 일치 (30,000,000원) - 0개",
+                                "6개 일치 (2,000,000,000원) - 0개",
+                                "총 수익률은 150,000.0%입니다."
+                        );
+                    },
+                    List.of(1, 2, 3, 4, 5, 45)
+            );
+        }
+
+        @Test
+        @DisplayName("5개의 숫자와 보너스 번호가 일치하여 잘 수행한다")
+        void _5개의_숫자와_보너스_번호가_일치하여_잘_수행한다() {
+            assertRandomUniqueNumbersInRangeTest(
+                    () -> {
+                        run("1000", "1,2,3,4,5,6", "7");
+                        assertThat(output()).contains(
+                                "1개를 구매했습니다.",
+                                "3개 일치 (5,000원) - 0개",
+                                "4개 일치 (50,000원) - 0개",
+                                "5개 일치 (1,500,000원) - 0개",
+                                "5개 일치, 보너스 볼 일치 (30,000,000원) - 1개",
+                                "6개 일치 (2,000,000,000원) - 0개",
+                                "총 수익률은 3,000,000.0%입니다."
+                        );
+                    },
+                    List.of(1, 2, 3, 4, 5, 7)
+            );
+        }
+
+        @Test
+        @DisplayName("6개의 숫자가 모두 일치하여 잘 수행한다")
+        void _6개의_숫자가_모두_일치하여_잘_수행한다() {
+            assertRandomUniqueNumbersInRangeTest(
+                    () -> {
+                        run("1000", "1,2,3,4,5,6", "7");
+                        assertThat(output()).contains(
+                                "1개를 구매했습니다.",
+                                "3개 일치 (5,000원) - 0개",
+                                "4개 일치 (50,000원) - 0개",
+                                "5개 일치 (1,500,000원) - 0개",
+                                "5개 일치, 보너스 볼 일치 (30,000,000원) - 0개",
+                                "6개 일치 (2,000,000,000원) - 1개",
+                                "총 수익률은 200,000,000.0%입니다."
+                        );
+                    },
+                    List.of(1, 2, 3, 4, 5, 6)
+            );
+        }
     }
 
     @Override
